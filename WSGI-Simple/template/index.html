@@ -1,0 +1,235 @@
+<html>
+    <head>
+        <title>INTERNATIONAL COVID-19</title>
+        
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    </head>
+
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    }
+    body{
+    background: linear-gradient(#24b8dd, rgb(152, 186, 230));
+    }
+    .wrapper{
+      width: 85%;
+      margin: 0 auto;
+    }
+    nav{
+      float: top;
+      line-height: 80px;  
+    }
+    nav a{
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-size: 15px;
+      margin: 0 10px;
+      color: #fff; 
+    }
+    .main{
+    width: 700px;
+    height: 80vh;
+    margin: auto;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    background: #fdfdfd;
+    }
+    .header{
+    width: 100%;
+    padding: 20px 0;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
+    position: relative;
+    }
+    .header img{
+    width: 20px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    }
+    .header p{
+    color: #007aff;
+    font-size: 25px;
+    text-align: center;
+    }
+    h3{
+      color: #202020;
+    }
+    .menu-icon{
+    left: 20px;
+    }
+    .main-text{
+    width: 600px;
+    margin: 50px auto 0 ;
+    text-align: center;
+    color: rgb(44, 44, 44);
+    font-size: 20px;
+    }
+    .main-text h2{
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    .swiper-container{
+    width: 95%;
+    height: 40%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+    }
+        table{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 300px;
+            height: 150px;
+            
+        }
+        tr{
+            transition: all .2s ease-in;
+            cursor: pointer;
+        }
+        th{
+            padding: 12px;
+            text-align: center;
+            background-color: #5cd8f7;
+            color: #fff;
+            border-spacing: 5px;
+            border-radius: 10px;
+        } 
+        td{
+            padding: 12px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+        }
+        #header{
+          background-color: rgb(83, 167, 245);
+          color: #fff;
+        }
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          background-color:  rgb(152, 186, 230);
+          color: white;
+          font-family: sans-serif;
+          text-align: center;
+}
+    </style>
+    
+    <body>
+      <div class="box-area">
+        <div class="wrapper">
+          <nav>
+            <a href="/">Home</a>
+            <a href="/sorted">Data</a>
+            <a href="/filter">Filter</a>
+            <a href="/about">About</a>
+          </nav>
+        </div>
+      </div>
+
+        <div class="main">
+            <div class="header">
+                <p>TANGGAP COVID</p>
+            </div>
+
+            <div class="main-text">
+                <h2>TENTANG COVID-19</h2>
+                <small>Pneumonia Coronavirus Disease 2019 atau COVID-19 adalah penyakit peradangan paru yang disebabkan oleh Severe Acute Respiratory Syndrome Coronavirus 2 (SARS-CoV-2). Gejala klinis yang muncul beragam, mulai dari seperti gejala flu biasa (batuk, pilek, nyeri tenggorok, nyeri otot, nyeri kepala) sampai yang berkomplikasi berat (pneumonia atau sepsis).
+                </small>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  {%for row in range(10)%}
+                    {% for cell in range(1) %}
+                    <div class="swiper-slide">
+                        <table style="border-spacing: 5px;">
+                            <tr>
+                                <th colspan="5">
+                                    <h2>{{covid[row].Negara}}</h2>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" style="background-color: rgb(250, 121, 33); border-radius: 10px; ">
+                                  {{ "{:,}".format(covid[row].Positif)}}
+                                  <h3>CONFIRMED</h3>
+                                </td>
+                                <td rowspan="2" style="background-color: rgb(229, 89, 52); border-radius: 10px;">
+                                  {{ "{:,}".format(covid[row].meninggal)}}
+                                  <h3>DEATH</h3>
+                                </td>
+                                <td rowspan="2" style="background-color: rgb(155, 197, 61); border-radius: 10px;" >
+                                  {{ "{:,}".format(covid[row].sembuh)}}
+                                  <h3>RECOVERED</h3>
+                                </td>
+                                <td rowspan="2" style="background-color: rgb(253, 231, 76); border-radius: 10px;">
+                                  {{ "{:,}".format(covid[row].dirawat)}}
+                                  <h3>ACTIVE</h3>
+                                </td>
+                                <td style="background-color: rgb(155, 197, 61); border-radius: 10px;">
+                                  {{ "{:.1f}%".format(covid[row].recopercentage)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: rgb(229, 89, 52); border-radius: 10px;">
+                                  {{ "{:.1f}%".format(covid[row].diepercentage) }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                      {% endfor %}
+                    {% endfor %}
+                    
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+                
+            </div>
+
+        </div>
+        
+        <div class="footer">
+          <p>@Kelompok_14</p>
+        </div>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+              spaceBetween: 30,
+              centeredSlides: true,
+              autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+            });
+          </script>
+          
+    </body>
+</html>

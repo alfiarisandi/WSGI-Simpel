@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <title>INTERNATIONAL COVID-19</title>
+        
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    </head>
+
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    }
+    body{
+    background: linear-gradient(#24b8dd, rgb(152, 186, 230));
+    }
+    .wrapper{
+      width: 85%;
+      margin: 0 auto;
+    }
+    nav{
+      float: top;
+      line-height: 80px;
+    }
+    nav a{
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-size: 15px;
+      margin: 0 10px;
+      color: #fff;
+    }
+    .main{
+    width: 750px;
+    height: 80vh;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    background: #fdfdfd;
+    }
+    .header{
+    width: 100%;
+    padding: 20px 0;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
+    position: relative;
+    }
+    .header img{
+    width: 20px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    }
+    .header p{
+    color: #007aff;
+    font-size: 25px;
+    text-align: center;
+    }
+    h3{
+      color: #202020;
+    }
+    .menu-icon{
+    left: 20px;
+    }
+    .main-text{
+    width: 600px;
+    margin: 40px auto 0 ;
+    text-align: center;
+    color: rgb(44, 44, 44);
+    font-size: 20px;
+    }
+    .main-text h2{
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    .swiper-container{
+    width: 95%;
+    height: 40%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+    }
+    .footer-menu{
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    padding: 17px 5px;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
+    }
+    .footer-menu img{
+    width: 20px; 
+    }
+    .main table{
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 5%;
+          height: auto;
+          width: 90%;
+        }
+        
+        th{
+            padding: 12px;
+            text-align: center;
+            background-color: #5cd8f7;
+            color: #fff;
+            border-spacing: 5px;
+            border-radius: 10px;
+        } 
+        td{
+            padding: 12px;
+            text-align: center;
+            border: none;
+        }
+        #header{
+          background-color: rgb(83, 167, 245);
+          color: #fff;
+        }
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          background-color:  rgb(152, 186, 230);
+          color: white;
+          font-family: sans-serif;
+          text-align: center;
+        }
+    </style>
+
+
+    <body>
+      <div class="box-area">
+        <div class="wrapper">
+          <nav>
+            <a href="/">Home</a>
+            <a href="/sorted">Data</a>
+            <a href="/filter">Filter</a>
+            <a href="/about">About</a>
+          </nav>
+        </div>
+      </div>
+        
+      
+      <div class="main" style="border-radius: 25px;">
+            <div class="header">
+                <p>TANGGAP COVID</p>
+            </div>
+
+            <div class="main-text">
+                <h2>DATA NEGARA COVID-19</h2>
+                <small>Menampilkan data covid-19 dengan presentase meninggal lebih dari 2.5% </small>
+            </div>
+
+            <table class="main" >
+              <tr>
+                <th >Negara</th>
+                <th >Positif</th>
+                <th >Meninggal</th>
+                <th >Sembuh</th>
+                <th >Aktif</th>
+                <th >persentase sembuh</th>
+                <th >persentase meninggal</th>
+              </tr>
+
+              <tr>
+                {% set row = namespace(value=0)%}
+                {%for i in covid %}
+                <tr>
+                  {% for cell in range(1) %}
+                  <td>{{covid[row.value].Negara}}</td>
+                  <td>{{ "{:,}".format(covid[row.value].Positif)}}</td>
+                  <td>{{ "{:,}".format(covid[row.value].meninggal)}}</td>
+                  <td>{{ "{:,}".format(covid[row.value].sembuh)}}</td>
+                  <td>{{ "{:,}".format(covid[row.value].dirawat)}}</td>
+                  <td>{{ "{:.1f}%".format(covid[row.value].recopercentage)}}</td>
+                  <td>{{ "{:.1f}%".format(covid[row.value].diepercentage) }}</td>
+                  {% endfor %}
+                </tr>
+                  {% set row.value = row.value + 1%}
+                {% endfor %}
+              </tr>
+            </table>
+
+        </div>
+        <div class="footer">
+          <p>@Kelompok_14</p>
+        </div>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+              spaceBetween: 30,
+              centeredSlides: true,
+              autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+            });
+          </script>
+          
+    </body>
+</html>

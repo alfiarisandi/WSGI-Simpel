@@ -1,0 +1,228 @@
+<html>
+    <head>
+        <title>INTERNATIONAL COVID-19</title>
+        
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    </head>
+
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    }
+    body{
+    background: linear-gradient(#24b8dd, rgb(152, 186, 230));
+    }
+    .wrapper{
+      width: 85%;
+      margin: 0 auto;
+    }
+    nav{
+      float: top;
+      line-height: 80px;
+    }
+    nav a{
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-size: 15px;
+      margin: 0 10px;
+      color: #fff;
+    }
+    .main{
+    width: 700px;
+    height: 80vh;
+    margin: auto;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    background: #fdfdfd;
+    }
+    
+    .header{
+    width: 100%;
+    padding: 20px 0;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
+    position: relative;
+    }
+    .header img{
+    width: 20px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    }
+    .header p{
+    color: #007aff;
+    font-size: 25px;
+    text-align: center;
+    }
+    h3{
+      color: #202020;
+    }
+    .menu-icon{
+    left: 20px;
+    }
+    .main-text{
+    width: 600px;
+    margin: 50px auto 0 ;
+    text-align: center;
+    color: rgb(44, 44, 44);
+    font-size: 20px;
+    }
+    .main-text h2{
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    .swiper-container{
+    width: 95%;
+    height: 40%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+    }
+    table{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 300px;
+      height: 150px;
+            
+        }
+        tr{
+          width: 100%;
+        }
+        th{
+            padding: 12px;
+            text-align: center;
+            background-color: rgb(83, 167, 245);
+            color: #fff;
+            border-spacing: 5px;
+            border-radius: 10px;
+        } 
+        td{
+            padding: 10px;
+            text-align: center ;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            white-space: nowrap;
+            
+        }
+        #header{
+          background-color: rgb(83, 167, 245);
+          color: #fff;
+        }
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          background-color:  rgb(152, 186, 230);
+          color: white;
+          font-family: sans-serif;
+          text-align: center;
+        }
+
+    </style>
+
+
+    <body>
+      <div class="box-area">
+        <div class="wrapper">
+          <nav>
+            <a href="/">Home</a>
+            <a href="/sorted">Data</a>
+            <a href="/filter">Filter</a>
+            <a href="/about">About</a>
+          </nav>
+        </div>
+      </div>
+
+        <div class="main">
+            <div class="header">
+                <p>PROFIL</p>
+            </div>
+
+            <div class="main-text">
+                <small>
+                  Untuk memenuhi tugas besar pemrograman fungsional, menerapkan High Order Function pada program python,
+                   menerapkan approach to web services pada program python kemudian menggunakan suatu data real yang ada pada python
+                   dan membuat suatu web dengan Bahasa pemrograman python
+                </small>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  {%for row in range(3)%}
+                    {% for cell in range(1) %}
+                    <div class="swiper-slide">
+                        <table style = "border-spacing: 8px;">
+                            <tr>
+                                <td rowspan="2" style = "background-color: #5cd8f7;
+                                border-radius: 50%;">
+                                  <img src="{{nama[row].gambar}}" width="150" height="150" style="border-radius: 50%;">
+                                </td>
+
+                                <td style = "background-color: #5cd8f7;
+                                border-radius: 10px;">
+                                <p>{{nama[row].nama}}</p>
+                                </td>
+                                </tr>
+
+                                <tr>
+                                <td style = "background-color: #5cd8f7;
+                                border-radius: 10px;">
+                                <p>{{nama[row].nim}}</p>
+                                </td>
+                              </tr>
+                        </table>
+                      </div>
+                      {% endfor %}
+                  {% endfor %}
+          
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+                
+            </div>
+
+        </div>
+        <div class="footer">
+          <p>@Kelompok_14</p>
+        </div>
+
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+              spaceBetween: 30,
+              centeredSlides: true,
+              autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+            });
+          </script>
+          
+    </body>
+</html>
